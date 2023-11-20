@@ -1,14 +1,10 @@
 {
   "compilerOptions": {
-    "types": [
-      "bun-types"
-    ],
+    "types": ["bun-types", "web"],
     /* Base Options: */
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "target": "esnext",
     "allowJs": true,
     "isolatedModules": true,
@@ -30,9 +26,7 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./src/*"
-      ]
+      "~/*": ["./src/*"]
     },
     "resolveJsonModule": true
   },
@@ -45,7 +39,5 @@
     "**/*.mjs",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
