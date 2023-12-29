@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
-    "types": ["bun-types", "web"],
+    "types": [
+      "bun-types",
+      "web"
+    ],
     /* Base Options: */
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": ["esnext"],
+    "lib": [
+      "esnext"
+    ],
     "target": "esnext",
     "allowJs": true,
     "isolatedModules": true,
@@ -15,7 +20,7 @@
     /* Bundled projects */
     "noEmit": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "jsx": "preserve",
     "plugins": [
       {
@@ -26,9 +31,12 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": [
+        "./src/*"
+      ]
     },
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     ".eslintrc.cjs",
@@ -39,5 +47,7 @@
     "**/*.mjs",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

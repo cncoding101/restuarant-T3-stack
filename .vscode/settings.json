@@ -1,0 +1,4 @@
+{
+    "debug.javascript.terminalOptions": {},
+    "debug.javascript.autoAttachFilter": "always"
+}
