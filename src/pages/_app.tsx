@@ -2,6 +2,11 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 
+// start: components
+import Cover from "~/components/atoms/Cover";
+import Layout from "~/components/templates/Layout";
+// end: components
+
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
@@ -10,9 +15,25 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  const navigationItems = [
+    {
+      to: "/",
+      label: "Home",
+    },
+  ];
+
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <Cover url="background.jpeg">
+        <Layout
+          sidebar={{
+            title: "dinner",
+            items: navigationItems,
+          }}
+        >
+          <Component {...pageProps} />
+        </Layout>
+      </Cover>
     </SessionProvider>
   );
 };

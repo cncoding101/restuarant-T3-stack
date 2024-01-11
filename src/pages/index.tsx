@@ -1,15 +1,9 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 
-import { api } from "~/utils/api";
+import { RouterOutputs, api } from "~/utils/api";
 
-const CreatePostWizard = () => {
-  return (
-    <div className="flex w-full gap-3">
-      <input placeholder="Type some emoji" className="grow bg-transparent" />
-    </div>
-  );
-};
+type Hello = RouterOutputs["post"]["hello"];
 
 export default function Home() {
   const { data, isLoading } = api.post.hello.useQuery({ text: "from tRPC" });

@@ -4,4 +4,16 @@
 
 body {
   @apply bg-black text-slate-50;
+  font-family: "Open Sans", sans-serif;
+}
+
+a,
+button,
+img {
+  transition: black 0.3s;
+
+  &:hover {
+    opacity: 0.75;
+    cursor: pointer;
+  }
 }
