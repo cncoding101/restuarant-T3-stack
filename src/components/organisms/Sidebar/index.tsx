@@ -2,7 +2,6 @@ import React from "react";
 import Logo from "~/components/atoms/Logo";
 import Link from "~/components/atoms/Link";
 import HamburgerMenu from "~/components/organisms/hamburger-menu";
-import styles from "~/components/organisms/Sidebar/styles.module.css";
 
 interface IProps {
   title: string;
@@ -11,15 +10,13 @@ interface IProps {
 
 const Sidebar: React.FC<IProps> = ({ title, items }) => {
   return (
-    <div
-      className={`${styles.navigation} bg-transparent-black sticky top-0 min-h-screen w-1/4`}
-    >
+    <div className="bg-transparent-black sticky top-0 min-h-screen w-1/4">
       <HamburgerMenu />
 
       <div className="flex flex-col items-center">
         <Logo url="logo.png" alt="boothaus-logo" scale={100} />
 
-        <h1 className="mt-5 text-4xl">{title}</h1>
+        <h1 className="mt-12 text-4xl">{title}</h1>
         <ul>
           {items.map((item, index) => (
             <li key={index}>

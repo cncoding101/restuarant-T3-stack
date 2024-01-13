@@ -8,6 +8,10 @@ import Cover from "~/components/atoms/Cover";
 import Layout from "~/components/templates/Layout";
 // end: components
 
+// start: contexts
+import { MyProvider } from "~/contexts/PopupDialog";
+// end: contexts
+
 import { api } from "~/utils/api";
 import i18nConfig from "../../next-i18next.config.mjs";
 
@@ -27,14 +31,16 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Cover url="background.jpeg">
-        <Layout
-          sidebar={{
-            title: "dinner",
-            items: navigationItems,
-          }}
-        >
-          <Component {...pageProps} />
-        </Layout>
+        <MyProvider>
+          <Layout
+            sidebar={{
+              title: "dinner",
+              items: navigationItems,
+            }}
+          >
+            <Component {...pageProps} />
+          </Layout>
+        </MyProvider>
       </Cover>
     </SessionProvider>
   );

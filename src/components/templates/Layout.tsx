@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import SideBar from "~/components/organisms/sidebar";
+import PopupDialog from "~/components/organisms/popup-dialog";
 
 interface IProps {
   sidebar: React.ComponentProps<typeof SideBar>;
@@ -13,7 +14,9 @@ const Layout: React.FC<IProps> = ({ sidebar, children }) => {
       <SideBar title={sidebar.title} items={sidebar.items} />
 
       {/* Main content */}
-      <div className="w-3/4 p-4">{children}</div>
+      <div className="w-3/4 p-4">
+        <PopupDialog>{children}</PopupDialog>
+      </div>
     </div>
   );
 };

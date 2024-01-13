@@ -4,7 +4,11 @@
 
 body {
   @apply bg-black text-slate-50;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Eczar", serif;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  word-break: break-word;
+  color: theme("colors.navigation-golden");
 }
 
 a,

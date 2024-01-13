@@ -12,15 +12,15 @@ const Nav: React.FC = () => {
 
   const items: React.ComponentProps<typeof Navbar>["items"] = [
     {
-      to: "/",
+      to: "/news",
       label: "aktuell",
     },
     {
-      to: "/",
+      to: "/about-us",
       label: "anfahrt",
     },
     {
-      to: "/",
+      to: "/contact-us",
       label: "bootshaus",
     },
   ];
@@ -31,7 +31,7 @@ const Nav: React.FC = () => {
         <Hamburger />
       </button>
 
-      {isOpen && <Navbar items={items} />}
+      {isOpen && <Navbar items={items} setIsOpen={setIsOpen} />}
     </div>
   );
 };

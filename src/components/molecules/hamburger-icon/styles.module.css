@@ -5,5 +5,5 @@
 .hamburger:hover {
   opacity: 0.75;
   cursor: pointer;
-  background-color: #ccc;
+  @apply bg-gray-200
 }
