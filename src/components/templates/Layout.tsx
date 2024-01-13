@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import SideBar from "~/components/organisms/Sidebar";
+import SideBar from "~/components/organisms/sidebar";
 
 interface IProps {
   sidebar: React.ComponentProps<typeof SideBar>;

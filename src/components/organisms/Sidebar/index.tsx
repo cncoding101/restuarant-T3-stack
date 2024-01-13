@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "~/components/atoms/Logo";
 import Link from "~/components/atoms/Link";
-import Hamburger from "~/components/molecules/Hamburger";
+import HamburgerMenu from "~/components/organisms/hamburger-menu";
 import styles from "~/components/organisms/Sidebar/styles.module.css";
 
 interface IProps {
@@ -12,9 +12,9 @@ interface IProps {
 const Sidebar: React.FC<IProps> = ({ title, items }) => {
   return (
     <div
-      className={`${styles.navigation} bg-transparent-black sticky top-0 min-h-screen w-1/4 p-4`}
+      className={`${styles.navigation} bg-transparent-black sticky top-0 min-h-screen w-1/4`}
     >
-      <Hamburger/>
+      <HamburgerMenu />
 
       <div className="flex flex-col items-center">
         <Logo url="logo.png" alt="boothaus-logo" scale={100} />

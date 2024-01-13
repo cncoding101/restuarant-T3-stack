@@ -46,7 +46,7 @@
     "**/*.cjs",
     "**/*.mjs",
     ".next/types/**/*.ts"
-  ],
+, "next-i18next.config.mjs"  ],
   "exclude": [
     "node_modules"
   ]

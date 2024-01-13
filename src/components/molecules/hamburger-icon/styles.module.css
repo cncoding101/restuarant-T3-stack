@@ -1,0 +1,9 @@
+.hamburger {
+  transition: black 0.3s;
+}
+
+.hamburger:hover {
+  opacity: 0.75;
+  cursor: pointer;
+  background-color: #ccc;
+}

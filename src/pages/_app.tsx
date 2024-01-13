@@ -1,6 +1,7 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
+import { appWithTranslation } from "next-i18next";
 
 // start: components
 import Cover from "~/components/atoms/Cover";
@@ -8,6 +9,7 @@ import Layout from "~/components/templates/Layout";
 // end: components
 
 import { api } from "~/utils/api";
+import i18nConfig from "../../next-i18next.config.mjs";
 
 import "~/styles/globals.css";
 
@@ -38,4 +40,4 @@ const MyApp: AppType<{ session: Session | null }> = ({
   );
 };
 
-export default api.withTRPC(MyApp);
+export default api.withTRPC(appWithTranslation(MyApp, i18nConfig));
