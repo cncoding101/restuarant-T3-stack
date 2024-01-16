@@ -10,13 +10,13 @@ interface IProps {
 
 const Sidebar: React.FC<IProps> = ({ title, items }) => {
   return (
-    <div className="bg-transparent-black sticky top-0 min-h-screen w-1/4">
+    <>
       <HamburgerMenu />
 
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center px-4">
         <Logo url="logo.png" alt="boothaus-logo" scale={100} />
 
-        <h1 className="mt-12 text-4xl">{title}</h1>
+        <h1 className="mt-12">{title}</h1>
         <ul>
           {items.map((item, index) => (
             <li key={index}>
@@ -25,7 +25,7 @@ const Sidebar: React.FC<IProps> = ({ title, items }) => {
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

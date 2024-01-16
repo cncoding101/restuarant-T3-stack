@@ -4,6 +4,10 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 export default {
   content: ["./src/**/*.tsx"],
   theme: {
+    screens: {
+      phone: { min: "375px", max: "1024px" },
+      laptop: "1024px",
+    },
     extend: {
       colors: {
         "navigation-golden": "#8a5129",

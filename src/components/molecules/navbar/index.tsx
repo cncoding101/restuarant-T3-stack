@@ -25,8 +25,8 @@ const Navbar: React.FC<IProps> = ({ items, setIsOpen }) => {
     <div className="absolute left-0 top-0 z-40 flex w-full flex-col justify-center bg-black">
       {items.map((item, index) => (
         <button
-          className={`text-4xl uppercase hover:bg-gray-200 ${
-            index === 0 ? "mt-12" : ""
+          className={`hover:bg-gray-200 ${
+            index === 0 ? "mt-9" : ""
           }  flex w-full justify-center py-4`}
           key={index}
           onClick={() => handleClick(item.to)}

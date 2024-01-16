@@ -33,7 +33,7 @@ const PopupDialog: React.FC<IProps> = ({ children }) => {
   console.log("what is state", state);
 
   return (
-    <div className="bottom-0 left-0 right-0 top-0 flex items-center justify-center">
+    <>
       {/* Semi-transparent overlay */}
       {state.isOpen && (
         <div className="fixed inset-0 bg-black opacity-50"></div>
@@ -52,7 +52,7 @@ const PopupDialog: React.FC<IProps> = ({ children }) => {
         {/* Popup content goes here */}
         {children}
       </div>
-    </div>
+    </>
   );
 };
 
