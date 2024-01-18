@@ -26,7 +26,7 @@ const Nav: React.FC = () => {
   ];
 
   return (
-    <div className="container mx-auto flex items-center justify-between">
+    <div className="z-10 flex items-center justify-between sticky top-0">
       <button className="z-50" onClick={(e) => handleClick(e)}>
         <Hamburger />
       </button>

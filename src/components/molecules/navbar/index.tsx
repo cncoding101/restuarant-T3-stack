@@ -1,5 +1,6 @@
 import React from "react";
 import router from "next/router";
+import Text from "~/components/atoms/text";
 import { useMyContext } from "~/contexts/PopupDialog";
 
 type Items = {
@@ -26,12 +27,12 @@ const Navbar: React.FC<IProps> = ({ items, setIsOpen }) => {
       {items.map((item, index) => (
         <button
           className={`hover:bg-gray-200 ${
-            index === 0 ? "mt-9" : ""
-          }  flex w-full justify-center py-4`}
+            index === 0 ? "mt-12" : ""
+          }  flex w-full justify-center py-3`}
           key={index}
           onClick={() => handleClick(item.to)}
         >
-          {item.label}
+          <Text variant="title">{item.label}</Text>
         </button>
       ))}
     </div>

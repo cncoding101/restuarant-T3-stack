@@ -21,12 +21,30 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const navigationItems = [
+  const items: React.ComponentProps<
+    typeof Layout
+  >["sidebar"]["items"] = [
     {
-      to: "/",
-      label: "Home",
+      type: "download",
+      props: {
+        fileName: "menu_de",
+        extension: "pdf",
+        label: "Speisekarte (PDF)",
+      },
+    },
+    {
+      type: "download",
+      props: {
+        fileName: "menu_eng",
+        extension: "pdf",
+        label: "Menu (PDF)",
+      },
     },
   ];
+
+  // const footer = {
+
+  // }
 
   return (
     <SessionProvider session={session}>
@@ -34,8 +52,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <MyProvider>
           <Layout
             sidebar={{
-              title: "dinner",
-              items: navigationItems,
+              items,
             }}
           >
             <Component {...pageProps} />

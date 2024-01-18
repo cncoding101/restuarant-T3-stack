@@ -1,11 +1,13 @@
+import Text from "~/components/atoms/text";
+
 const AboutUs: React.FC = () => {
   return (
     <div className="flex flex-col">
-      <h1>aktuell</h1>
-      <p>
+      <Text variant="title">aktuell</Text>
+      <Text variant="paragraph">
         LIEBE GÄSTE, ZUR ZEIT LIEGT NICHTS AKTUELLES VOR. WIR HABEN WIE GEWOHNT
         FÜR SIE GEÖFFNET.
-      </p>
+      </Text>
     </div>
   );
 };

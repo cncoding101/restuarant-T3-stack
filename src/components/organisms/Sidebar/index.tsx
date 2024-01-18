@@ -1,29 +1,74 @@
 import React from "react";
+import Text from "~/components/atoms/text";
 import Logo from "~/components/atoms/Logo";
 import Link from "~/components/atoms/Link";
+import Download from "~/components/atoms/Download";
+import Footer from "~/components/organisms/Footer";
 import HamburgerMenu from "~/components/organisms/hamburger-menu";
 
-interface IProps {
-  title: string;
-  items: React.ComponentProps<typeof Link>[];
+interface IDownload {
+  type: "download";
+  props: React.ComponentProps<typeof Download>;
 }
 
-const Sidebar: React.FC<IProps> = ({ title, items }) => {
+interface ILink {
+  type: "link";
+  props: React.ComponentProps<typeof Link>;
+}
+
+interface IProps {
+  items: (ILink | IDownload)[];
+  footer: React.ComponentProps<typeof Footer>;
+}
+
+const Sidebar: React.FC<IProps> = ({ items, footer }) => {
   return (
     <>
       <HamburgerMenu />
 
       <div className="flex flex-col items-center px-4">
         <Logo url="logo.png" alt="boothaus-logo" scale={100} />
+        <Text variant="heading" className="mb-3 mt-9">
+          dienstag - samstag
+        </Text>
 
-        <h1 className="mt-12">{title}</h1>
-        <ul>
-          {items.map((item, index) => (
-            <li key={index}>
-              <Link to={item.to} label={item.label} />
-            </li>
-          ))}
+        <Text variant="paragraph" className="my-1">
+          dinner | 17<sup>30</sup>-21<sup>30</sup>
+        </Text>
+
+        <Text variant="paragraph" className="my-1">
+          bar | 17<sup>30</sup> - 00<sup>00</sup>
+        </Text>
+
+        <ul className="my-4 flex flex-col items-center">
+          {items.map((item, index) => {
+            const { type, props } = item;
+            switch (type) {
+              case "download":
+                return (
+                  <li key={index}>
+                    <Download
+                      fileName={props.fileName}
+                      extension={props.extension}
+                      label={props.label}
+                    />
+                  </li>
+                );
+
+              case "link":
+                return (
+                  <li key={index}>
+                    <Link to={props.to} label={props.label} />
+                  </li>
+                );
+            }
+          })}
         </ul>
+
+        {/* table reservation */}
+
+        {/* footer */}
+        {/* <Footer icons={footer.icons}></Footer> */}
       </div>
     </>
   );

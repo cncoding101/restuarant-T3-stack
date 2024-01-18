@@ -30,8 +30,6 @@ const PopupDialog: React.FC<IProps> = ({ children }) => {
     };
   }, [ref, dispatch, state.isOpen]);
 
-  console.log("what is state", state);
-
   return (
     <>
       {/* Semi-transparent overlay */}

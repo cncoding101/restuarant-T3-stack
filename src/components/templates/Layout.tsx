@@ -14,13 +14,13 @@ const Layout: React.FC<IProps> = ({ sidebar, children }) => {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <div className="laptop:w-1/4 bg-transparent-black sticky top-0 min-h-screen">
-        <SideBar title={sidebar.title} items={sidebar.items} />
+      <div className="bg-transparent-black min-h-screen min-w-[539px]">
+        <SideBar items={sidebar.items} footer={sidebar.footer} />
       </div>
 
       {/* Main content */}
       {state.isOpen && (
-        <div className="laptop:w-3/4 phone:absolute flex items-center justify-center h-screen">
+        <div className="phone:absolute flex h-screen items-center justify-center p-4">
           <PopupDialog>{children}</PopupDialog>
         </div>
       )}
