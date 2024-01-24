@@ -9,21 +9,23 @@ const HamburgerIcon: React.FC = () => {
       className={`${styles.hamburger} space-y-2 p-4`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setIsHovered(false)}
     >
       <span
         className={`${
           isHovered ? "bg-black" : "bg-navigation-golden"
-        } block h-0.5 w-8`}
+        } block h-0.5 w-7`}
       ></span>
       <span
         className={`${
           isHovered ? "bg-black" : "bg-navigation-golden"
-        } block h-0.5 w-8`}
+        } block h-0.5 w-7`}
       ></span>
       <span
         className={`${
           isHovered ? "bg-black" : "bg-navigation-golden"
-        } block h-0.5 w-8`}
+        } block h-0.5 w-7`}
       ></span>
     </div>
   );

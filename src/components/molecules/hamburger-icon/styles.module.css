@@ -1,8 +1,10 @@
-.hamburger {
-  transition: black 0.3s;
+.hamburger:hover {
+  opacity: 0.75;
+  cursor: pointer;
+  @apply bg-gray-200
 }
 
-.hamburger:hover {
+.hamburger:active {
   opacity: 0.75;
   cursor: pointer;
   @apply bg-gray-200

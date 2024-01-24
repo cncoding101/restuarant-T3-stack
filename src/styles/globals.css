@@ -10,13 +10,17 @@ body,
 button {
   font-family: "Eczar", serif;
   text-transform: uppercase;
-  letter-spacing: 6px;
   word-break: break-word;
+  letter-spacing: 6px;
   color: theme("colors.navigation-golden");
 }
 
+p {
+  letter-spacing: 3px;
+}
+
 /* Apply styles for screens larger than or equal to the 'phone' breakpoint */
-@media (min-width: 375px) and (max-width: 480px) {
+@media (min-width: 375px) and (max-width: 1024px) {
   h1 {
     font-size: 1.5rem; /* 24px */
     line-height: 2rem; /* 32px */
@@ -34,7 +38,7 @@ button {
 }
 
 /* Apply styles for screens larger than or equal to the 'laptop' breakpoint */
-@media (min-width: 480px) {
+@media (min-width: 1024px) {
   h1 {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -52,12 +56,32 @@ button {
 }
 
 a,
-button,
 img {
-  transition: black 0.3s;
+  transition: opacity 0.3s ease-in-out;
+}
 
+button {
+  transition: transform 0.3s ease-in-out;
+}
+
+a,
+img {
   &:hover {
-    opacity: 0.75;
     cursor: pointer;
+    opacity: 0.75;
+  }
+
+  &:active {
+    cursor: pointer;
+    opacity: 0.75;
+  }
+}
+
+button {
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(1.1);
   }
 }

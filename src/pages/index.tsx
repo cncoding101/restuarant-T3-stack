@@ -12,20 +12,7 @@ export default function Home() {
 
   if (!data) return <div>Smth went wrong..</div>;
 
-  return (
-    <>
-      <main className="flex h-screen justify-center">
-        <div className="h-full w-full border-x border-slate-400 md:max-w-2xl">
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {data ? data.greeting : "Loading tRPC query..."}
-            </p>
-            <AuthShowcase />
-          </div>
-        </div>
-      </main>
-    </>
-  );
+  return <AuthShowcase />;
 }
 
 function AuthShowcase() {

@@ -3,9 +3,10 @@ import { useRouter } from "next/router";
 interface IProps {
   to: string;
   label: string;
+  className?: string;
 }
 
-const Link: React.FC<IProps> = ({ to, label }) => {
+const Link: React.FC<IProps> = ({ to, label, className }) => {
   const router = useRouter();
 
   const handleClick = async (e: React.MouseEvent) => {
@@ -13,7 +14,7 @@ const Link: React.FC<IProps> = ({ to, label }) => {
     await router.push(to);
   };
 
-  return <a href={to} onClick={handleClick}>{label}</a>;
+  return <a href={to} onClick={handleClick} className={className}>{label}</a>;
 };
 
 export default Link;

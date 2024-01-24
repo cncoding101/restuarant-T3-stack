@@ -1,6 +1,7 @@
 import React, { type ReactNode, useRef, useEffect } from "react";
+import Icon from "~/components/atoms/Icon";
 import { useMyContext } from "~/contexts/PopupDialog";
-import { IoMdClose } from "react-icons/io";
+import styles from "~/components/organisms/popup-dialog/styles.module.css";
 
 interface IProps {
   children: ReactNode;
@@ -39,12 +40,14 @@ const PopupDialog: React.FC<IProps> = ({ children }) => {
 
       <div
         ref={ref}
-        className={`transform rounded bg-transparent-black p-8 shadow-md transition-transform ${
-          state.isOpen ? "scale-100" : "scale-0"
+        className={`rounded bg-transparent-black p-8 shadow-md ${
+          state.isOpen
+            ? styles["transition-open"]
+            : `${styles["transition-close"]}`
         }`}
       >
-        <button onClick={handleClose} className="absolute right-2 top-2 p-2">
-          <IoMdClose color="#8a5129" className="text-2xl" />
+        <button onClick={handleClose} disabled={!state.isOpen} className="absolute right-2 top-2 p-2">
+          <Icon icon="close" type="io" size={30} />
         </button>
 
         {/* Popup content goes here */}

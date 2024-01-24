@@ -21,9 +21,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const items: React.ComponentProps<
-    typeof Layout
-  >["sidebar"]["items"] = [
+  const items: React.ComponentProps<typeof Layout>["sidebar"]["items"] = [
     {
       type: "download",
       props: {
@@ -42,9 +40,30 @@ const MyApp: AppType<{ session: Session | null }> = ({
     },
   ];
 
-  // const footer = {
-
-  // }
+  const footer: React.ComponentProps<typeof Layout>["sidebar"]["footer"] = {
+    icons: [
+      {
+        icon: "tripadvisor",
+        type: "si",
+        size: 50,
+      },
+      {
+        icon: "instagram",
+        type: "fa",
+        size: 50,
+      },
+      {
+        icon: "facebook",
+        type: "fa",
+        size: 50,
+      },
+      {
+        icon: "yelp",
+        type: "fa",
+        size: 50,
+      },
+    ],
+  };
 
   return (
     <SessionProvider session={session}>
@@ -53,6 +72,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
           <Layout
             sidebar={{
               items,
+              footer,
             }}
           >
             <Component {...pageProps} />

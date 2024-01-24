@@ -23,11 +23,17 @@ interface IProps {
 
 const Sidebar: React.FC<IProps> = ({ items, footer }) => {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <HamburgerMenu />
 
-      <div className="flex flex-col items-center px-4">
-        <Logo url="logo.png" alt="boothaus-logo" scale={100} />
+      <div className="flex flex-grow flex-col items-center">
+        <Logo
+          url="logo.png"
+          alt="boothaus-logo"
+          scale={100}
+          to="/about-us"
+          className="px-2"
+        />
         <Text variant="heading" className="mb-3 mt-9">
           dienstag - samstag
         </Text>
@@ -64,13 +70,15 @@ const Sidebar: React.FC<IProps> = ({ items, footer }) => {
             }
           })}
         </ul>
-
-        {/* table reservation */}
-
-        {/* footer */}
-        {/* <Footer icons={footer.icons}></Footer> */}
       </div>
-    </>
+
+      {/* table reservation */}
+
+      {/* footer */}
+      <div className="flex flex-col items-center">
+        <Footer icons={footer.icons}></Footer>
+      </div>
+    </div>
   );
 };
 

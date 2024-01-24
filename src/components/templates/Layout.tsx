@@ -12,18 +12,20 @@ const Layout: React.FC<IProps> = ({ sidebar, children }) => {
   const { state } = useMyContext();
 
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       {/* Sidebar */}
-      <div className="bg-transparent-black min-h-screen min-w-[539px]">
+      <div className="bg-transparent-black phone:z-10 laptop:min-w-[539px]">
         <SideBar items={sidebar.items} footer={sidebar.footer} />
       </div>
 
       {/* Main content */}
-      {state.isOpen && (
-        <div className="phone:absolute flex h-screen items-center justify-center p-4">
-          <PopupDialog>{children}</PopupDialog>
-        </div>
-      )}
+      <div
+        className={`${
+          state.isOpen ? "phone:z-10" : ""
+        } flex items-center justify-center p-4 phone:absolute laptop:flex-grow`}
+      >
+        <PopupDialog>{children}</PopupDialog>
+      </div>
     </div>
   );
 };

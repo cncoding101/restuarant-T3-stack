@@ -1,21 +1,25 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useMyContext } from "~/contexts/PopupDialog";
 
 interface IProps {
   url: string;
   alt?: string;
   to?: string;
   scale?: number;
+  className?: string;
 }
 
-const Logo: React.FC<IProps> = ({ url, alt = "", to, scale = 100 }) => {
+const Logo: React.FC<IProps> = ({ url, alt = "", to, scale = 100, className }) => {
   const router = useRouter();
+  const { dispatch } = useMyContext();
 
   const handleClick = async (e: React.MouseEvent) => {
     if(!to) return;
 
     e.preventDefault();
-    await router.push(to);
+    dispatch({ type: "OPEN" });
+    await router.push({ pathname: to });
   };
 
   return (
@@ -25,7 +29,7 @@ const Logo: React.FC<IProps> = ({ url, alt = "", to, scale = 100 }) => {
       width={500}
       height={500}
       onClick={(e) => handleClick(e)}
-      className={`scale-${scale}`}
+      className={`scale-${scale} ${className}`}
     />
   );
 };
