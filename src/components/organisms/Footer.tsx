@@ -1,53 +1,60 @@
+import Text from "~/components/atoms/Text";
 import Icon from "~/components/atoms/Icon";
 import Link from "~/components/atoms/Link";
 
 interface IContact {
   phone: string;
   email: string;
-  location: string;
+  location: React.ComponentProps<typeof Link>;
 }
 
 interface IProps {
   icons: React.ComponentProps<typeof Icon>[];
-  contact?: IContact;
+  contact: IContact;
 }
 
 const Footer: React.FC<IProps> = ({ icons, contact }) => {
   return (
-    <>
+    <footer className="flex flex-col items-center">
       {/* icons */}
-      <div className="flex">
+      <section className="flex">
         {icons.map((icon, index) => (
           <button key={index}>
-            <Icon {...icon} className="m-2" />
+            <Icon {...icon} className="m-3" />
           </button>
         ))}
-      </div>
+      </section>
 
-      {/* <div className="flex items-center">
-        <Icon icon="close" type="io" className="m-2" />
-        {contact.phone}
-      </div>
+      <section className="flex items-baseline">
+        <Icon icon="phone" type="fa" className="m-2" />
+        <Text variant="label">{contact.phone}</Text>
+      </section>
 
-      <div className="flex items-center">
-        <Icon icon="close" type="io" className="m-2" />
-        <Link to={`mailto:${contact.email}`} label={contact.email} />
-      </div>
+      <section className="flex items-baseline">
+        <Icon icon="location" type="fa6" className="m-2" />
+        <Link {...contact.location} className="text-xs" />
+      </section>
 
-      <div className="flex items-center">
-        <Icon icon="close" type="io" className="m-2" />
-        <Link to={contact.location} label="hello" />
-      </div>
-
-      <div className="flex items-center">
-        <p className="p-1">hello</p> |{" "}
+      <section className="flex items-baseline">
+        <Icon icon="email" type="md" className="m-2" />
         <Link
-          to={`mailto:anh_nguyen4@hotmail.com}`}
-          label="hello"
-          className="p-1"
+          to={`mailto:${contact.email}`}
+          label={contact.email}
+          className="text-xs"
         />
-      </div> */}
-    </>
+      </section>
+
+      <section className="mb-2 flex">
+        <Text variant="label" className="p-1 text-xs">
+          BOOTSHAUS GRILL & BAR |
+          <Link
+            to={`mailto:anh_nguyen4@hotmail.com}`}
+            label="impressum"
+            className="p-1"
+          />
+        </Text>
+      </section>
+    </footer>
   );
 };
 

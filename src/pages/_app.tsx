@@ -45,24 +45,32 @@ const MyApp: AppType<{ session: Session | null }> = ({
       {
         icon: "tripadvisor",
         type: "si",
-        size: 50,
+        size: 40,
       },
       {
         icon: "instagram",
         type: "fa",
-        size: 50,
+        size: 40,
       },
       {
         icon: "facebook",
         type: "fa",
-        size: 50,
+        size: 40,
       },
       {
         icon: "yelp",
         type: "fa",
-        size: 50,
+        size: 40,
       },
     ],
+    contact: {
+      phone: "040 - 33473744",
+      email: "RESERVIERUNG@BOOTSHAUS-HAFENCITY.DE",
+      location: {
+        to: "/contact-us",
+        label: "KAISERKAI 19",
+      },
+    },
   };
 
   return (

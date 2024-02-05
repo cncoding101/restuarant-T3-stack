@@ -1,10 +1,12 @@
 import React from "react";
-import Text from "~/components/atoms/text";
+import Text from "~/components/atoms/Text";
 import Logo from "~/components/atoms/Logo";
 import Link from "~/components/atoms/Link";
 import Download from "~/components/atoms/Download";
 import Footer from "~/components/organisms/Footer";
 import HamburgerMenu from "~/components/organisms/hamburger-menu";
+
+import { PAGES } from "~/utils/constants";
 
 interface IDownload {
   type: "download";
@@ -76,7 +78,7 @@ const Sidebar: React.FC<IProps> = ({ items, footer }) => {
 
       {/* footer */}
       <div className="flex flex-col items-center">
-        <Footer icons={footer.icons}></Footer>
+        <Footer {...footer}></Footer>
       </div>
     </div>
   );

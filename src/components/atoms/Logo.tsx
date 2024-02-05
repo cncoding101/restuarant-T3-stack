@@ -2,6 +2,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useMyContext } from "~/contexts/PopupDialog";
 
+import { PAGES } from "~/utils/constants";
+import type { Page } from "~/utils/types";
+
 interface IProps {
   url: string;
   alt?: string;
@@ -10,15 +13,22 @@ interface IProps {
   className?: string;
 }
 
-const Logo: React.FC<IProps> = ({ url, alt = "", to, scale = 100, className }) => {
+const Logo: React.FC<IProps> = ({
+  url,
+  alt = "",
+  to,
+  scale = 100,
+  className,
+}) => {
   const router = useRouter();
   const { dispatch } = useMyContext();
 
   const handleClick = async (e: React.MouseEvent) => {
-    if(!to) return;
+    if (!to) return;
 
     e.preventDefault();
-    dispatch({ type: "OPEN" });
+
+    if (PAGES.includes(to as Page)) dispatch({ type: "OPEN" });
     await router.push({ pathname: to });
   };
 

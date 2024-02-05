@@ -40,13 +40,17 @@ const PopupDialog: React.FC<IProps> = ({ children }) => {
 
       <div
         ref={ref}
-        className={`rounded bg-transparent-black p-8 shadow-md ${
+        className={`shadow-auto max-h-[80%] min-w-[50%] overflow-auto rounded bg-transparent-black p-8 ${
           state.isOpen
             ? styles["transition-open"]
             : `${styles["transition-close"]}`
         }`}
       >
-        <button onClick={handleClose} disabled={!state.isOpen} className="absolute right-2 top-2 p-2">
+        <button
+          onClick={handleClose}
+          disabled={!state.isOpen}
+          className="absolute right-2 top-2 p-2"
+        >
           <Icon icon="close" type="io" size={30} />
         </button>
 

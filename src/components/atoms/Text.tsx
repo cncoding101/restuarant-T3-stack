@@ -11,7 +11,6 @@ interface IProps {
 const ELEMENTS = {
   title: "h1",
   heading: "h2",
-  subHeading: "h3",
   paragraph: "p",
   label: "label",
 } as const;

@@ -1,6 +1,6 @@
 import React from "react";
 import router from "next/router";
-import Text from "~/components/atoms/text";
+import Text from "~/components/atoms/Text";
 import { useMyContext } from "~/contexts/PopupDialog";
 
 type Items = {
@@ -24,7 +24,7 @@ const Navbar: React.FC<IProps> = ({ items, isOpen, setIsOpen }) => {
   };
 
   return (
-    <>
+    <nav>
       {items.map((item, index) => (
         <button
           disabled={!isOpen}
@@ -37,7 +37,7 @@ const Navbar: React.FC<IProps> = ({ items, isOpen, setIsOpen }) => {
           <Text variant="title">{item.label}</Text>
         </button>
       ))}
-    </>
+    </nav>
   );
 };
 

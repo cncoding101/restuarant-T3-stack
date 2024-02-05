@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Hamburger from "~/components/molecules/hamburger-icon";
 import Navbar from "~/components/molecules/navbar";
 import styles from "~/components/organisms/hamburger-menu/styles.module.css";
+import { PAGES } from "~/utils/constants";
 
 const Nav: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -27,15 +28,15 @@ const Nav: React.FC = () => {
 
   const items: React.ComponentProps<typeof Navbar>["items"] = [
     {
-      to: "/news",
+      to: PAGES.news,
       label: "aktuell",
     },
     {
-      to: "/contact-us",
+      to: PAGES.contactUs,
       label: "anfahrt",
     },
     {
-      to: "/about-us",
+      to: PAGES.aboutUs,
       label: "bootshaus",
     },
   ];
