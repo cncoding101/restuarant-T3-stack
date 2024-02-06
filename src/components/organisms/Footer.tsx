@@ -1,59 +1,105 @@
 import Text from "~/components/atoms/Text";
 import Icon from "~/components/atoms/Icon";
 import Link from "~/components/atoms/Link";
+import ButtonLink from "~/components/molecules/ButtonLink";
+import { usePhoneView } from "../hoc/layout";
 
 interface IContact {
-  phone: string;
-  email: string;
-  location: React.ComponentProps<typeof Link>;
+  phone: { number: string; size: number };
+  email: { address: string; size: number };
+  location: { to: string; label: string; size: number };
 }
 
 interface IProps {
-  icons: React.ComponentProps<typeof Icon>[];
+  links: ({ to: string } & {
+    icon: React.ComponentProps<typeof Icon>;
+  })[];
   contact: IContact;
 }
 
-const Footer: React.FC<IProps> = ({ icons, contact }) => {
+const Footer: React.FC<IProps> = ({ links, contact }) => {
+  const isPhoneView = usePhoneView();
+
   return (
     <footer className="flex flex-col items-center">
       {/* icons */}
       <section className="flex">
-        {icons.map((icon, index) => (
-          <button key={index}>
-            <Icon {...icon} className="m-3" />
-          </button>
+        {links.map((link, index) => (
+          <ButtonLink key={index} to={link.to} className="m-3">
+            <Icon {...link.icon} />
+          </ButtonLink>
         ))}
       </section>
+      {isPhoneView ? (
+        <>
+          <section className="flex">
+            <ButtonLink to={`tel:${contact.phone.number}`}>
+              <Icon
+                icon="phone"
+                type="fa"
+                className="m-2"
+                size={contact.phone.size}
+              />
+            </ButtonLink>
 
-      <section className="flex items-baseline">
-        <Icon icon="phone" type="fa" className="m-2" />
-        <Text variant="label">{contact.phone}</Text>
-      </section>
+            <ButtonLink to={contact.location.to}>
+              <Icon
+                icon="location"
+                type="fa6"
+                className="m-2"
+                size={contact.location.size}
+              />
+            </ButtonLink>
 
-      <section className="flex items-baseline">
-        <Icon icon="location" type="fa6" className="m-2" />
-        <Link {...contact.location} className="text-xs" />
-      </section>
+            <ButtonLink to={`mailto:${contact.email.address}`}>
+              <Icon
+                icon="email"
+                type="md"
+                className="m-2"
+                size={contact.email.size}
+              />
+            </ButtonLink>
+          </section>
 
-      <section className="flex items-baseline">
-        <Icon icon="email" type="md" className="m-2" />
-        <Link
-          to={`mailto:${contact.email}`}
-          label={contact.email}
-          className="text-xs"
-        />
-      </section>
+          <section className="mb-2 flex">
+            <small>
+              <Link to="/impressum" className="p-1">
+                <Text variant="label">impressum</Text>
+              </Link>
+            </small>
+          </section>
+        </>
+      ) : (
+        <>
+          <section className="flex items-baseline">
+            <Icon icon="phone" type="fa" className="m-2" />
+            <Text variant="paragraph">{contact.phone.number}</Text>
+          </section>
+          <section className="flex items-baseline">
+            <Icon icon="location" type="fa6" className="m-2" />
+            <Link to={contact.location.to}>
+              <Text variant="label">{contact.location.label}</Text>
+            </Link>
+          </section>
+          <section className="flex items-baseline">
+            <Icon icon="email" type="md" className="m-2" />
+            <Link to={`mailto:${contact.email.address}`} className="text-xs">
+              <Text variant="label">{contact.email.address}</Text>
+            </Link>
+          </section>
 
-      <section className="mb-2 flex">
-        <Text variant="label" className="p-1 text-xs">
-          BOOTSHAUS GRILL & BAR |
-          <Link
-            to={`mailto:anh_nguyen4@hotmail.com}`}
-            label="impressum"
-            className="p-1"
-          />
-        </Text>
-      </section>
+          <section className="mb-2 flex">
+            <small>
+              <Text variant="label" className="p-1 text-xs">
+                BOOTSHAUS GRILL & BAR |
+                <Link to="/impressum" className="p-1">
+                  <Text variant="label">impressum</Text>
+                </Link>
+              </Text>
+            </small>
+          </section>
+        </>
+      )}
     </footer>
   );
 };

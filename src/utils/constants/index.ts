@@ -1,3 +1,3 @@
-const PAGES = ["/", "news", "/about-us", "/contact-us"] as const;
+const PAGES = ["/", "news", "/about-us", "/contact-us", "/impressum"] as const;
 
 export { PAGES };

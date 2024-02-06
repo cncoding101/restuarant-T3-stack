@@ -6,8 +6,6 @@ import Download from "~/components/atoms/Download";
 import Footer from "~/components/organisms/Footer";
 import HamburgerMenu from "~/components/organisms/hamburger-menu";
 
-import { PAGES } from "~/utils/constants";
-
 interface IDownload {
   type: "download";
   props: React.ComponentProps<typeof Download>;
@@ -15,18 +13,19 @@ interface IDownload {
 
 interface ILink {
   type: "link";
-  props: React.ComponentProps<typeof Link>;
+  props: React.ComponentProps<typeof Link> & { label: string };
 }
 
 interface IProps {
   items: (ILink | IDownload)[];
+  hamburgerMenu: React.ComponentProps<typeof HamburgerMenu>;
   footer: React.ComponentProps<typeof Footer>;
 }
 
-const Sidebar: React.FC<IProps> = ({ items, footer }) => {
+const Sidebar: React.FC<IProps> = ({ items, hamburgerMenu, footer }) => {
   return (
     <div className="flex min-h-screen flex-col">
-      <HamburgerMenu />
+      <HamburgerMenu {...hamburgerMenu} />
 
       <div className="flex flex-grow flex-col items-center">
         <Logo
@@ -66,7 +65,9 @@ const Sidebar: React.FC<IProps> = ({ items, footer }) => {
               case "link":
                 return (
                   <li key={index}>
-                    <Link to={props.to} label={props.label} />
+                    <Link to={props.to}>
+                      <Text variant="label">{props.label}</Text>
+                    </Link>
                   </li>
                 );
             }

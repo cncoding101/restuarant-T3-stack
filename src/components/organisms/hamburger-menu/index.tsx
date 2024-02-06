@@ -2,14 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import Hamburger from "~/components/molecules/hamburger-icon";
 import Navbar from "~/components/molecules/navbar";
 import styles from "~/components/organisms/hamburger-menu/styles.module.css";
-import { PAGES } from "~/utils/constants";
 
-const Nav: React.FC = () => {
+interface IProps {
+  items: React.ComponentProps<typeof Navbar>["items"];
+}
+
+const Nav: React.FC<IProps> = ({ items }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = (e: React.MouseEvent) => {
-    console.log("inside here");
     e.preventDefault();
     setIsOpen(!isOpen);
   };
@@ -25,21 +27,6 @@ const Nav: React.FC = () => {
       document.removeEventListener("mousedown", handleClick);
     };
   }, [ref, setIsOpen, isOpen]);
-
-  const items: React.ComponentProps<typeof Navbar>["items"] = [
-    {
-      to: PAGES.news,
-      label: "aktuell",
-    },
-    {
-      to: PAGES.contactUs,
-      label: "anfahrt",
-    },
-    {
-      to: PAGES.aboutUs,
-      label: "bootshaus",
-    },
-  ];
 
   return (
     <div

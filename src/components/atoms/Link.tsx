@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import type { ReactNode } from "react";
 import { useMyContext } from "~/contexts/PopupDialog";
 
 import { PAGES } from "~/utils/constants";
@@ -6,11 +7,11 @@ import type { Page } from "~/utils/types";
 
 interface IProps {
   to: string;
-  label: string;
+  children: ReactNode;
   className?: string;
 }
 
-const Link: React.FC<IProps> = ({ to, label, className }) => {
+const Link: React.FC<IProps> = ({ to, children, className }) => {
   const router = useRouter();
   const { dispatch } = useMyContext();
 
@@ -22,7 +23,7 @@ const Link: React.FC<IProps> = ({ to, label, className }) => {
 
   return (
     <a href={to} onClick={handleClick} className={className}>
-      {label}
+      {children}
     </a>
   );
 };

@@ -21,18 +21,18 @@ const Layout: React.FC<IProps> = ({ sidebar, children }) => {
 
       <main className="flex h-screen">
         {/* Sidebar */}
-        <aside className="bg-transparent-black phone:z-10 laptop:min-w-[539px]">
-          <SideBar items={sidebar.items} footer={sidebar.footer} />
-        </aside>
+        <section className="bg-transparent-black phone:z-10 phone:w-full laptop:min-w-[539px]">
+          <SideBar {...sidebar} />
+        </section>
 
         {/* Main content */}
-        <div
+        <section
           className={`${
-            state.isOpen ? "phone:z-10" : ""
+            state.isOpen ? "phone:z-10" : "pointer-events-none"
           } flex items-center justify-center p-4 phone:absolute laptop:flex-grow`}
         >
           <PopupDialog>{children}</PopupDialog>
-        </div>
+        </section>
       </main>
     </>
   );
